@@ -4,6 +4,7 @@
 #include <pthread.h>
 
 #include "../IWorker.hpp"
+#include "../ISignal.hpp"
 
 
 namespace Medit
@@ -21,6 +22,11 @@ class Thread
      * @brief pointer to current thread
      */
     pthread_t *threadId;
+
+    /**
+     * @brief worker instance running in thread
+     */
+    IWorker *worker;
 
 public:
 
@@ -47,10 +53,10 @@ public:
     bool isAlive() const;
 
     /**
-     * @brief start new thread with given worker
+     * @brief start new thread with worker
      * @param worker worker instance to run
      */
-    void start(IWorker *worker);
+    void start();
 
     /**
      * @brief join running thread
@@ -61,6 +67,13 @@ public:
      * @brief force terminate running thread
      */
     void terminate();
+
+    /**
+     * @brief propagate signal into running worker
+     *      if no worker running, nothing happend
+     * @param signal signal instance to propagate
+     */
+    void sendSignal(const ISignal &signal);
 
     /**
      * @brief assign operator
