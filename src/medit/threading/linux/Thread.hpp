@@ -2,6 +2,7 @@
 #define MEDIT_THREADING_LINUX_THREAD_HPP
 
 #include <pthread.h>
+#include <memory>
 
 #include "../IWorker.hpp"
 #include "../ISignal.hpp"
@@ -14,6 +15,7 @@ namespace Threading
 namespace Linux
 {
 
+using namespace std;
 
 class Thread
 {
@@ -21,7 +23,7 @@ class Thread
     /**
      * @brief pointer to current thread
      */
-    pthread_t *threadId;
+    pthread_t threadId;
 
     /**
      * @brief worker instance running in thread

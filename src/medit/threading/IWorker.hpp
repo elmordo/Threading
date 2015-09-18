@@ -19,7 +19,10 @@ protected:
 public:
     IWorker();
 
-    virtual void logic() = 0;
+    /**
+     * @brief contains worker main logic
+     */
+    virtual void doAction() = 0;
 
     /**
      * send signal to thread
