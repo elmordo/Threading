@@ -26,7 +26,17 @@ AbstractWorker::AbstractWorker(const AbstractWorker &original)
     shutDown = original.shutDown;
 }
 
-void AbstractWorker::processMessages(size_t num)
+bool AbstractWorker::getShutDown() const
+{
+    return shutDown;
+}
+
+void AbstractWorker::setShutDown(bool val)
+{
+    shutDown = val;
+}
+
+void AbstractWorker::processSignals(size_t num)
 {
     // iterate until all signals are processed and/or max processed signals
     // count is reached

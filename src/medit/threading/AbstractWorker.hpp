@@ -72,9 +72,21 @@ public:
     virtual ~AbstractWorker();
 
     /**
+     * @brief return shutdown status
+     * @return true if shutdown flag is set
+     */
+    bool getShutDown() const;
+
+    /**
+     * @brief set new shutdown flag
+     * @param val new value of flag
+     */
+    void setShutDown(bool val);
+
+    /**
      * @brief process messages in queue
      */
-    virtual void processMessages(size_t num=-1);
+    virtual void processSignals(size_t num=-1);
 
 
     // IWorker interface
