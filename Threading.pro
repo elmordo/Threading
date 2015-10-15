@@ -25,3 +25,8 @@ unix {
     target.path = /usr/lib
     INSTALLS += target
 }
+
+unix:!macx: LIBS += -L$$PWD/../build-MeditBase-Desktop-Ladění/ -lMeditBase
+
+INCLUDEPATH += $$PWD/../MeditBase/src
+DEPENDPATH += $$PWD/../MeditBase/src

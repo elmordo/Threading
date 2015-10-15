@@ -1,6 +1,8 @@
 #ifndef MEDIT_THREADING_IWORKER_HPP
 #define MEDIT_THREADING_IWORKER_HPP
 
+#include "Signal.hpp"
+
 namespace Medit
 {
 namespace Threading
@@ -27,7 +29,7 @@ public:
     /**
      * send signal to thread
      */
-    void sendSignal(const ISignal &signal) = 0;
+    virtual void sendSignal(const Signal &signal) = 0;
 
 };
 

@@ -44,7 +44,7 @@ public:
      * @param signalType type of signal
      * @param data pointer to memory where data is stored
      */
-    Signal(size_t signalType, void *data)
+    Signal(size_t signalType, void *data);
 
     /**
      * @brief destroy instance
