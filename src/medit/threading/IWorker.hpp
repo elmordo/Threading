@@ -34,7 +34,7 @@ public:
     /**
      * send signal to thread
      */
-    virtual void sendSignal(const Signal &signal) = 0;
+    virtual void sendSignal(Signal *signal) = 0;
 
 };
 

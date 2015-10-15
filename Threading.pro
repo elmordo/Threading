@@ -16,12 +16,14 @@ QMAKE_CXXFLAGS += -std=c++0x
 SOURCES += \
     src/medit/threading/IWorker.cpp \
     src/medit/threading/Signal.cpp \
-    src/medit/threading/Thread.cpp
+    src/medit/threading/Thread.cpp \
+    src/medit/threading/AbstractWorker.cpp
 
 HEADERS +=\
     src/medit/threading/IWorker.hpp \
     src/medit/threading/Signal.hpp \
-    src/medit/threading/Thread.hpp
+    src/medit/threading/Thread.hpp \
+    src/medit/threading/AbstractWorker.hpp
 
 unix {
     target.path = /usr/lib
