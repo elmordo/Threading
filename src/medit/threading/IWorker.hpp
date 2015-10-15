@@ -16,15 +16,15 @@ public:
 
     typedef std::allocator<IWorker> Allocator;
 
-protected:
+    /**
+     * @brief empty constructor
+     */
+    IWorker();
 
     /**
-     * @brief process incomming singlans
+     * @brief destructor
      */
-    void processSignals();
-
-public:
-    IWorker();
+    virtual ~IWorker();
 
     /**
      * @brief contains worker main logic

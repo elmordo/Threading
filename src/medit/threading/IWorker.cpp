@@ -9,5 +9,9 @@ IWorker::IWorker()
 {
 }
 
+IWorker::~IWorker()
+{
+}
+
 } // namespace Threading
 } // namespace Medit
