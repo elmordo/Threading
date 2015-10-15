@@ -2,6 +2,10 @@
 #define MEDIT_THREADING_ISIGNAL_HPP
 
 #include <cstddef>
+#include <memory>
+
+using namespace std;
+
 
 namespace Medit
 {
@@ -10,9 +14,42 @@ namespace Threading
 
 class Signal
 {
+
+    /**
+     * @brief pointer to data
+     */
+    void *data;
+
+    /**
+     * @brief if true, signal was processed
+     */
+    bool processed;
+
+    /**
+     * @brief unique identifier of signal
+     */
+    size_t signalType;
+
 public:
 
+    /**
+     * @brief create empty instance with signalType set to 0
+     */
     Signal();
+
+    /**
+     * @brief create initialized instance. Memory management of data is not
+     *        sender of signal
+     *
+     * @param signalType type of signal
+     * @param data pointer to memory where data is stored
+     */
+    Signal(size_t signalType, void *data)
+
+    /**
+     * @brief destroy instance
+     */
+    virtual ~Signal();
 
     /**
      * @brief return identifier of signal type
@@ -22,15 +59,26 @@ public:
 
     /**
      * @brief return data
-     * @return pointer to data
+     * @return constant pointer to data
      */
-    void *getData() const;
+    const void *getData() const;
 
     /**
-     * @brief clone signal instance
-     * @return pointer to new instance
+     * return editable data
+     * @return pointer to data
      */
-    ISignal *clone() const;
+    void *getData();
+
+    /**
+     * @brief test if signal was processed by receiver
+     * @return true if signal was processed. Otherwise false
+     */
+    bool isProcessed() const;
+
+    /**
+     * mark signal as processed
+     */
+    void markProcessed();
 
 };
 
