@@ -8,11 +8,11 @@ namespace Medit
 namespace Threading
 {
 
-class ISignal
+class Signal
 {
 public:
 
-    ISignal();
+    Signal();
 
     /**
      * @brief return identifier of signal type
@@ -25,6 +25,12 @@ public:
      * @return pointer to data
      */
     void *getData() const;
+
+    /**
+     * @brief clone signal instance
+     * @return pointer to new instance
+     */
+    ISignal *clone() const;
 
 };
 

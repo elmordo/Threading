@@ -1,11 +1,11 @@
-#include "ISignal.hpp"
+#include "Signal.hpp"
 
 namespace Medit
 {
 namespace Threading
 {
 
-ISignal::ISignal()
+Signal::Signal()
 {
 }
 
