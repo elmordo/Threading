@@ -11,13 +11,17 @@ TEMPLATE = lib
 
 DEFINES += THREADING_LIBRARY
 
+QMAKE_CXXFLAGS += -std=c++0x
+
 SOURCES += \
     src/medit/threading/IWorker.cpp \
-    src/medit/threading/Signal.cpp
+    src/medit/threading/Signal.cpp \
+    src/medit/threading/Thread.cpp
 
 HEADERS +=\
     src/medit/threading/IWorker.hpp \
-    src/medit/threading/Signal.hpp
+    src/medit/threading/Signal.hpp \
+    src/medit/threading/Thread.hpp
 
 unix {
     target.path = /usr/lib

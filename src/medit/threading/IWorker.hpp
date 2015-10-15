@@ -1,6 +1,8 @@
 #ifndef MEDIT_THREADING_IWORKER_HPP
 #define MEDIT_THREADING_IWORKER_HPP
 
+#include <memory>
+
 #include "Signal.hpp"
 
 namespace Medit
@@ -10,6 +12,9 @@ namespace Threading
 
 class IWorker
 {
+public:
+
+    typedef std::allocator<IWorker> Allocator;
 
 protected:
 
