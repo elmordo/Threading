@@ -12,12 +12,10 @@ TEMPLATE = lib
 DEFINES += THREADING_LIBRARY
 
 SOURCES += \
-    src/medit/threading/linux/Thread.cpp \
     src/medit/threading/IWorker.cpp \
     src/medit/threading/Signal.cpp
 
 HEADERS +=\
-    src/medit/threading/linux/Thread.hpp \
     src/medit/threading/IWorker.hpp \
     src/medit/threading/Signal.hpp
 
