@@ -17,7 +17,7 @@ Signal::Signal(size_t signalType, void *data)
     processed = false;
 }
 
-Signal~Signal()
+Signal::~Signal()
 {
 }
 
