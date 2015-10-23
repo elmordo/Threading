@@ -18,14 +18,16 @@ SOURCES += \
     src/medit/threading/Signal.cpp \
     src/medit/threading/Thread.cpp \
     src/medit/threading/AbstractWorker.cpp \
-    src/medit/threading/IterationWorker.cpp
+    src/medit/threading/IterationWorker.cpp \
+    src/medit/threading/ThreadManager.cpp
 
 HEADERS +=\
     src/medit/threading/IWorker.hpp \
     src/medit/threading/Signal.hpp \
     src/medit/threading/Thread.hpp \
     src/medit/threading/AbstractWorker.hpp \
-    src/medit/threading/IterationWorker.hpp
+    src/medit/threading/IterationWorker.hpp \
+    src/medit/threading/ThreadManager.hpp
 
 unix {
     target.path = /usr/lib

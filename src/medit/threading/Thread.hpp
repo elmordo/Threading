@@ -29,7 +29,12 @@ class Thread
 {
 public:
 
+    /**
+     * @brief type for thread ids
+     */
     typedef thread::id threadId;
+
+private:
 
     /**
      * @brief real thread
