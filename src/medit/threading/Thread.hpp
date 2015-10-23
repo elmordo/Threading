@@ -1,6 +1,7 @@
 #ifndef MEDIT_THREADING_THREAD_HPP
 #define MEDIT_THREADING_THREAD_HPP
 
+#include <memory>
 #include <thread>
 #include <queue>
 #include <medit/meditbase/base.hpp>
@@ -33,6 +34,8 @@ public:
      * @brief type for thread ids
      */
     typedef thread::id threadId;
+
+    typedef allocator<Thread> Allocator;
 
 private:
 

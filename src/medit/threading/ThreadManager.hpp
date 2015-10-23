@@ -1,6 +1,7 @@
 #ifndef MEDIT_THREADING_THREADMANAGER_HPP
 #define MEDIT_THREADING_THREADMANAGER_HPP
 
+#include <algorithm>
 #include <list>
 
 #include "Thread.hpp"
@@ -15,6 +16,8 @@ class ThreadManager
 public:
 
     typedef list<Thread *> ThreadList;
+
+    typedef Thread* ThreadPtr;
 
 private:
 
@@ -40,7 +43,7 @@ public:
      * @param worker optional worker to set
      * @return new thread instance
      */
-    Thread *createThread(IWorker *worker);
+    ThreadPtr createThread(IWorker *worker);
 
     /**
      * @brief remove all threads from manager. Running threads are killed
