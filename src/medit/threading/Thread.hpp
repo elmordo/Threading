@@ -17,7 +17,8 @@ namespace Threading
 
 MEDIT_CREATE_EXCEPTION_E(MeditBase::BaseException, ThreadException)
 
-    THREAD_IS_RUNNING
+    THREAD_IS_RUNNING,
+    THREAD_CAN_NOT_BE_COPIED,
 
 MEDIT_END_EXCEPTION_E;
 
@@ -52,6 +53,13 @@ public:
      * @param worker worker to set
      */
     Thread(IWorker *worker);
+
+    /**
+     * @brief copytor (override standard copytor to throw exception)
+     * @param original original instance
+     * @throw ThreadException every time it is called
+     */
+    Thread(const Thread &original);
 
     /**
      * @brief join thread if running and destroy worker if set
@@ -92,6 +100,14 @@ public:
      * @throw ThreadException thread is running (it is not joined)
      */
     void setWorker(IWorker *value);
+
+    /**
+     * @brief override standard assign operator to throw exception
+     * @param original instance with original data
+     * @return reference to self
+     * @throw ThreadException thrown everytime
+     */
+    Thread &operator =(const Thread &original);
 };
 
 } // namespace Threading

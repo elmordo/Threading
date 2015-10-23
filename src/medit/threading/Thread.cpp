@@ -37,6 +37,11 @@ Thread::Thread(IWorker *worker)
     this->worker = worker;
 }
 
+Thread::Thread(const Thread &)
+{
+    MEDIT_THROW(ThreadException, "Thread can not be coppied", ThreadException::THREAD_CAN_NOT_BE_COPIED);
+}
+
 Thread::~Thread()
 {
     // join thread before deleting instance
@@ -74,6 +79,10 @@ bool Thread::isJoined() const
     return internalThread.joinable();
 }
 
+Thread &Thread::operator =(const Thread &)
+{
+    MEDIT_THROW(ThreadException, "Thread can not be coppied", ThreadException::THREAD_CAN_NOT_BE_COPIED);
+}
+
 } // namespace Threading
 } // namespace Medit
-
