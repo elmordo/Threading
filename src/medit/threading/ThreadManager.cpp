@@ -40,7 +40,7 @@ void ThreadManager::removeAll()
         }
 
         alloc.destroy(thread);
-        alloc.deallocate(thread);
+        alloc.deallocate(thread, 1);
     }
 
     threads.clear();
@@ -58,7 +58,7 @@ void ThreadManager::removeThread(Thread *thread)
 
         Thread::Allocator alloc;
         alloc.destroy(thread);
-        alloc.deallocate(thread);
+        alloc.deallocate(thread, 1);
 
         threads.erase(pos);
     }
