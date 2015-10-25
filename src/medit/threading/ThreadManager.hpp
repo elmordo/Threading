@@ -43,7 +43,7 @@ public:
      * @param worker optional worker to set
      * @return new thread instance
      */
-    ThreadPtr createThread(IWorker *worker);
+    ThreadPtr createThread(IWorker *worker=NULL);
 
     /**
      * @brief remove all threads from manager. Running threads are killed

@@ -21,7 +21,7 @@ IterationWorker::~IterationWorker()
 void IterationWorker::doAction()
 {
     // do iterations while shut down flag is true
-    while (getShutDown())
+    while (!getShutDown())
     {
         // do one iteration of computation cycle
         iterate();

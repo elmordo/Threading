@@ -16,10 +16,11 @@ namespace Medit
 namespace Threading
 {
 
-MEDIT_CREATE_EXCEPTION_E(MeditBase::BaseException, ThreadException)
+MEDIT_CREATE_EXCEPTION_E(Medit::MeditBase::BaseException, ThreadException)
 
     THREAD_IS_RUNNING,
     THREAD_CAN_NOT_BE_COPIED,
+    WORKER_IS_NOT_SET,
 
 MEDIT_END_EXCEPTION_E;
 
@@ -33,7 +34,7 @@ public:
     /**
      * @brief type for thread ids
      */
-    typedef thread::id threadId;
+    typedef thread::id ThreadId;
 
     typedef allocator<Thread> Allocator;
 
@@ -50,6 +51,14 @@ private:
     IWorker *worker;
 
 public:
+
+    /**
+     * @brief counter of destruction calls
+     *      used in test target
+     */
+#ifdef TEST
+    static size_t killCounter;
+#endif
 
     /**
      * @brief create uninitialized instance
@@ -78,7 +87,7 @@ public:
      * @brief return current thread id
      * @return
      */
-    threadId getId() const;
+    ThreadId getId() const;
 
     /**
      * @brief test if thread was joined

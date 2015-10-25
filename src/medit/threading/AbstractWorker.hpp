@@ -48,14 +48,6 @@ protected:
 public:
 
     /**
-     * @brief set of supported signal types
-     */
-    enum SIGNAL_TYPES
-    {
-        SHUT_DOWN,
-    };
-
-    /**
      * @brief create common instance
      */
     AbstractWorker();

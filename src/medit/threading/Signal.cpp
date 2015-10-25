@@ -5,6 +5,7 @@ namespace Medit
 namespace Threading
 {
 
+
 Signal::Signal()
 {
     processed = false;

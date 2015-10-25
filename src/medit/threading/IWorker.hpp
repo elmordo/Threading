@@ -14,6 +14,14 @@ class IWorker
 {
 public:
 
+    /**
+     * @brief set of supported signal types
+     */
+    enum SIGNAL_TYPES
+    {
+        SHUT_DOWN,
+    };
+
     typedef std::allocator<IWorker> Allocator;
 
     /**

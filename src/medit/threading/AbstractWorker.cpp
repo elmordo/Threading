@@ -7,6 +7,11 @@ namespace Threading
 
 AbstractWorker::AbstractWorker()
 {
+    shutDown = false;
+}
+
+AbstractWorker::~AbstractWorker()
+{
 }
 
 AbstractWorker::AbstractWorker(const AbstractWorker &original)

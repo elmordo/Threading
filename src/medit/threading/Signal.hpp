@@ -38,13 +38,13 @@ public:
     Signal();
 
     /**
-     * @brief create initialized instance. Memory management of data is not
+     * @brief create initialized instance. Memory management of data is on
      *        sender of signal
      *
      * @param signalType type of signal
      * @param data pointer to memory where data is stored
      */
-    Signal(size_t signalType, void *data);
+    Signal(size_t signalType, void *data=NULL);
 
     /**
      * @brief destroy instance

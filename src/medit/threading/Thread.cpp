@@ -5,8 +5,17 @@ namespace Medit
 namespace Threading
 {
 
+#ifdef TEST
+size_t Thread::killCounter = 0;
+#endif
+
 void workerStarter(IWorker *worker)
 {
+    if (worker == NULL)
+    {
+        MEDIT_THROW(ThreadException, "Worker is not set", ThreadException::WORKER_IS_NOT_SET);
+    }
+
     worker->doAction();
 }
 
@@ -54,29 +63,48 @@ Thread::~Thread()
         alloc.destroy(worker);
         alloc.deallocate(worker, 1);
     }
+
+    // increase kill counter if this is test target
+#ifdef TEST
+    ++killCounter;
+#endif
 }
 
-Thread::threadId Thread::getId() const
+Thread::ThreadId Thread::getId() const
 {
     return internalThread.get_id();
 }
 
 void Thread::join()
 {
-    if (internalThread.joinable())
+    if (internalThread.joinable() && worker)
     {
+        // set kill signal
+        Signal sig(IWorker::SHUT_DOWN);
+        worker->sendSignal(&sig);
+
         internalThread.join();
     }
 }
 
 void Thread::start()
 {
+    if (!worker)
+    {
+        MEDIT_THROW(ThreadException, "Worker is not set", ThreadException::WORKER_IS_NOT_SET);
+    }
+
+    if (!isJoined())
+    {
+        MEDIT_THROW(ThreadException, "Thread is running", ThreadException::THREAD_IS_RUNNING);
+    }
+
     internalThread = thread(workerStarter, worker);
 }
 
 bool Thread::isJoined() const
 {
-    return internalThread.joinable();
+    return !internalThread.joinable();
 }
 
 Thread &Thread::operator =(const Thread &)
